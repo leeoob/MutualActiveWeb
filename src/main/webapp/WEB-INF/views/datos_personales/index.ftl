@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-sm-6">                    
             <label class="col-sm-2 col-form-label">Localidad</label>
-            <select class="custom-select" name="localidad" id="localidad" required>
+            <select class="custom-select" name="localidad_id"  required>
                 <#list  localidades as localidades>
                     <option value="${localidades.id}">${localidades.descripcion}</option>
                 </#list>                

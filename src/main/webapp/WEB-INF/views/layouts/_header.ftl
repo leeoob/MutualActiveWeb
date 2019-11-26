@@ -9,6 +9,7 @@
         <script src="${context_path}/js/validarFormulario.js"></script>
         <script src="${context_path}/js/funcionFiltrado.js"></script>
         <script src="${context_path}/js/confirmarEliminado.js"></script>
+        <script src="${context_path}/js/enlaces.js"></script>
         </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark ">
@@ -28,44 +29,44 @@
                     <#if session.is_admin!false >
                     <li class="nav-item  dropdown btn-outline-success">
                         <a class="nav-link active" href="${context_path}/cargar_consumo">Cargar Consumo</a>
-                    </li>       
+                        </li>       
                     <div class="btn-group btn-outline-success">
                         <button type="button" class="btn btn-dark">Socios</button>
                         <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="sr-only">Socios</span>
-                        </button>
+                            </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="${context_path}/abm_socios">Alta-Baja-Modificacion</a>
                             <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="${context_path}/abm_socios/mostrar">Lista Socios</a>
+                            <a class="dropdown-item" href="${context_path}/abm_socios/mostrar">Lista Socios</a>
                             </div>
                         </div>
-                        <div class="btn-group btn-outline-success">
+                    <div class="btn-group btn-outline-success">
                         <button type="button" class="btn btn-dark">Comercios</button>
                         <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="sr-only">Comercios</span>
-                        </button>
+                            </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item " href="${context_path}/abm_comercios">Alta-Baja-Modificacion</a>
                             <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="${context_path}/abm_comercios/mostrar">Lista Comercios</a>
+                            <a class="dropdown-item" href="${context_path}/abm_comercios/mostrar">Lista Comercios</a>
                             </div>
                         </div>
-                        <div class="btn-group btn-outline-success">
+                    <div class="btn-group btn-outline-success">
                         <button type="button" class="btn btn-dark">Localidades</button>
                         <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="sr-only">Localidades</span>
-                        </button>
+                            </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item " href="${context_path}/abm_localidades">Alta-Baja-Modificacion</a>
                             <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="${context_path}/abm_localidades/mostrar">Lista Localidades</a>
+                            <a class="dropdown-item" href="${context_path}/abm_localidades/mostrar">Lista Localidades</a>
                             </div>
                         </div>
                     </#if>
                     <#if session.is_socio!false >
-                        <li class="nav-item  dropdown btn-outline-success">
-                            <a class="nav-link active" href="${context_path}/datos_personales">Datos Personales</a>
+                    <li class="nav-item  dropdown btn-outline-success">
+                        <a class="nav-link active" href="${context_path}/datos_personales">Datos Personales</a>
                         </li>
                     </#if>
                     </ul>
@@ -74,5 +75,10 @@
                     </form>
                 </div>
             </nav>
+        <span class="cargando">Cargando...</span>
+        <style>
+            span.cargando { display:none; color: white; background-color: #ff2626; padding: 10px; margin-left: 10px;} 
+            div.resultado {padding: 10px;}
+        </style>
 
 

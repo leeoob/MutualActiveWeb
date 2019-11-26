@@ -16,3 +16,4 @@
             <a class="danger">${error}</a>
         </div>        
     </#if>        
+</div>

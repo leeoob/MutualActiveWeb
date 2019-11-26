@@ -6,11 +6,10 @@
 package app.controllers;
 
 import app.models.Socio;
-import java.util.Map;
+import ar.mppfiles.utils.validation.simple.ParamValidationException;
+import ar.mppfiles.utils.validation.simple.ParamValidator;
 import org.javalite.activeweb.AppController;
 import org.javalite.activeweb.annotations.POST;
-import org.javalite.common.Convert;
-import org.javalite.common.Util;
 
 /**
  *
@@ -23,22 +22,26 @@ public class CambiarMailController extends AppController {
     }
 
     @POST
-    public void cambiarMailPost() {
+    public void cambiarMailPost() throws ParamValidationException {
 
-        Map parametros = params();
+        ParamValidator parametros = validar();
 
-        if (!Util.blank(parametros)) {
-            if (Socio.first("email = ? ", Convert.toString(parametros.get("mail"))) == null) {
-                Socio socio = Socio.findById(Convert.toInteger(parametros.get("id")));
-                socio.set("email", Convert.toString(parametros.get("mail")));
-                socio.saveIt();
-                flash("mensaje", "El mail se cambio correctamente");
-                redirect(InicioController.class, "index");
-            }
+        if (Socio.first("email = ? ", parametros.getString("mail")) == null) {
+            Socio socio = Socio.findById(parametros.getInteger("id"));
+            socio.set("email", parametros.getString("mail"));
+            socio.saveIt();
+            flash("mensaje", "El mail se cambio correctamente");
+            redirect(InicioController.class, "index");
         } else {
-            view("error", "Ingrese un Email Valido");
-            render();
+            flash("error", "El mail se cambio correctamente");
+            redirect(InicioController.class, "index");
 
         }
+    }
+
+    public ParamValidator validar() throws ParamValidationException {
+        ParamValidator validador = new ParamValidator().fromMap(params1st());
+        validador.con("mail").requerido().check();
+        return validador;
     }
 }

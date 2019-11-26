@@ -7,7 +7,6 @@ package app.models;
 
 import java.math.BigDecimal;
 import org.javalite.activejdbc.Base;
-import org.javalite.activejdbc.LazyList;
 import org.javalite.activejdbc.Model;
 import org.javalite.activejdbc.annotations.BelongsTo;
 import org.javalite.activejdbc.annotations.Table;
@@ -58,8 +57,9 @@ public class Socio extends Model {
     }
 
     public boolean isTieneUsuario() {
-
         return !Util.blank(getUsuario());
     }
+    
+    
 
 }

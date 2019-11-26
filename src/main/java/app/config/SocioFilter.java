@@ -23,13 +23,9 @@ public class SocioFilter extends HttpSupportFilter{
         
         Socio socio;
         if (!sessionHas("socio")) {
-            try {
-                socio = Socio.first("dni = ? ", Integer.valueOf(getHttpServletRequest().getRemoteUser()));
-                session("socio", socio);
-                session("recaptcha_public_key", (String) TomcatHelper.getVariable("recaptcha_public_key"));
-            } catch (NamingException ex) {
-                Logger.getLogger(SocioFilter.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            socio = Socio.first("dni = ? ", Integer.valueOf(getHttpServletRequest().getRemoteUser()));
+            session("socio", socio);
+            
         }
     }
     
